@@ -3,7 +3,6 @@ package edu.cs.utexas.HadoopEx;
 import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class GPSErrorHourReducer extends  Reducer<IntWritable, IntWritable, IntWritable, IntWritable> {

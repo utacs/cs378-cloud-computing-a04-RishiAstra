@@ -6,6 +6,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -13,7 +14,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 
-public class GPSErrorHour extends Configured implements Tool {
+public class GPSErrorCar1 extends Configured implements Tool {
 
 	/**
 	 * 
@@ -28,17 +29,17 @@ public class GPSErrorHour extends Configured implements Tool {
 		try {
 			Configuration conf = new Configuration();
 
-			Job job = new Job(conf, "GPS Errors by Hour");
-			job.setJarByClass(GPSErrorHour.class);
+			Job job = new Job(conf, "GPS Errors by Car");
+			job.setJarByClass(GPSErrorCar1.class);
 
 			// specify a Mapper
-			job.setMapperClass(GPSErrorHourMapper.class);
+			job.setMapperClass(GPSErrorCarMapper1.class);
 
 			// specify a Reducer
-			job.setReducerClass(GPSErrorHourReducer.class);
+			job.setReducerClass(GPSErrorCarReducer1.class);
 
 			// specify output types
-			job.setOutputKeyClass(IntWritable.class);
+			job.setOutputKeyClass(Text.class);
 			job.setOutputValueClass(IntWritable.class);
 
 			// specify input and output directories
