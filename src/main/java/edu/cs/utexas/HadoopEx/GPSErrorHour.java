@@ -15,18 +15,13 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class WordCount extends Configured implements Tool {
+public class GPSErrorHour extends Configured implements Tool {
 
 	/**
 	 * 
 	 * @param args
 	 * @throws Exception
 	 */
-
-	public static void main(String[] args) throws Exception {
-		int res = ToolRunner.run(new Configuration(), new WordCount(), args);
-		System.exit(res);
-	}
 
 	/**
 	 * 
@@ -36,16 +31,16 @@ public class WordCount extends Configured implements Tool {
 			Configuration conf = new Configuration();
 
 			Job job = new Job(conf, "WordCount");
-			job.setJarByClass(WordCount.class);
+			job.setJarByClass(GPSErrorHour.class);
 
 			// specify a Mapper
-			job.setMapperClass(WordCountMapper.class);
+			job.setMapperClass(GPSErrorHourMapper.class);
 
 			// specify a Reducer
-			job.setReducerClass(WordCountReducer.class);
+			job.setReducerClass(GPSErrorHourReducer.class);
 
 			// specify output types
-			job.setOutputKeyClass(Text.class);
+			job.setOutputKeyClass(IntWritable.class);
 			job.setOutputValueClass(IntWritable.class);
 
 			// specify input and output directories
