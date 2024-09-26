@@ -28,7 +28,7 @@ public class AvgEarn1 extends Configured implements Tool {
 		try {
 			Configuration conf = new Configuration();
 
-			Job job = new Job(conf, "GPS Errors by Car");
+			Job job = new Job(conf, "Avg Earn 1");
 			job.setJarByClass(AvgEarn1.class);
 
 			// specify a Mapper

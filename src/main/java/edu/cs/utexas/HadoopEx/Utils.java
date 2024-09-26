@@ -71,16 +71,20 @@ public class Utils {
 
 		boolean bad_pickup_pos = false;
 		boolean bad_dropoff_pos = false;
+		// if fail, bad pos
 		try {
 			float pick_long = Float.parseFloat(parts[6]);
 			float pick_lat = Float.parseFloat(parts[7]);
+			bad_pickup_pos = pick_long == 0 || pick_lat == 0;
+		} catch (NumberFormatException e) {
+			bad_pickup_pos = true;
+		}
+		try {
 			float drop_long = Float.parseFloat(parts[8]);
 			float drop_lat = Float.parseFloat(parts[9]);
-			bad_pickup_pos = pick_long == 0 || pick_lat == 0;
 			bad_dropoff_pos = drop_long == 0 || drop_lat == 0;
 		} catch (NumberFormatException e) {
-			printBadLine("bad line (float parse): " + line);
-			return false;
+			bad_dropoff_pos = true;
 		}
 
 		out.totalCost = totalCost;
