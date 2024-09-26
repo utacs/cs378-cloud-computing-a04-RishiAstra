@@ -62,6 +62,9 @@ public class AvgEarn2 extends Configured implements Tool {
 			FileOutputFormat.setOutputPath(job, new Path(args[1]));
 			job.setOutputFormatClass(TextOutputFormat.class);
 
+			// 1 reducer
+			job.setNumReduceTasks(1);
+
 			return (job.waitForCompletion(true) ? 0 : 1);
 
 		} catch (InterruptedException | ClassNotFoundException | IOException e) {

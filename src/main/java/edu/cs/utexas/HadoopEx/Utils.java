@@ -53,6 +53,10 @@ public class Utils {
 				printBadLine("bad line (money): " + line);
 				return false;
 			}
+			if (totalCost >= 500) {
+				printBadLine("bad line (money): " + line);
+				return false;
+			}
 
 			tripTimeInSec = Integer.parseInt(parts[4]);
 			if (tripTimeInSec == 0) {
